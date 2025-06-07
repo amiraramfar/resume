@@ -22,7 +22,7 @@
 
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background-color: #111; /* پس‌زمینه تیره‌تر برای بدنه */
+            background-color: #111;
             color: #EAEAEA;
             line-height: 1.6;
             font-size: 10pt;
@@ -39,18 +39,17 @@
             display: flex;
             width: 210mm;
             height: 297mm;
-            background-color: #1A1A1A; /* پس‌زمینه اصلی رزومه */
-            position: relative; /* برای قرارگیری اشکال رنگی */
-            overflow: hidden; /* پنهان کردن بخش‌های اضافی اشکال */
+            background-color: #1A1A1A;
+            position: relative;
+            overflow: hidden;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
         }
 
-        /* اشکال رنگی در پس‌زمینه */
         .page::before, .page::after {
             content: '';
             position: absolute;
             border-radius: 50%;
-            filter: blur(120px); /* افکت محو و نرم */
+            filter: blur(120px);
             opacity: 0.15;
             z-index: 1;
         }
@@ -58,7 +57,7 @@
         .page::before {
             width: 400px;
             height: 400px;
-            background: linear-gradient(90deg, #8A2387, #E94057, #F27121); /* گرادیانت بنفش-نارنجی */
+            background: linear-gradient(90deg, #8A2387, #E94057, #F27121);
             top: -150px;
             right: -150px;
         }
@@ -66,18 +65,17 @@
         .page::after {
             width: 350px;
             height: 350px;
-            background: linear-gradient(90deg, #00c6ff, #0072ff); /* گرادیانت آبی */
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
             bottom: -100px;
             left: -100px;
         }
-
 
         .sidebar {
             width: 35%;
             padding: 30px;
             box-sizing: border-box;
-            background-color: rgba(0, 0, 0, 0.1); /* پس‌زمینه نیمه‌شفاف برای ستون */
-            z-index: 2; /* بالاتر از اشکال رنگی */
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: 2;
             border-left: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -85,7 +83,7 @@
             width: 65%;
             padding: 30px;
             box-sizing: border-box;
-            z-index: 2; /* بالاتر از اشکال رنگی */
+            z-index: 2;
         }
 
         /* --- ۳. استایل‌دهی به بخش‌های مختلف --- */
@@ -93,7 +91,6 @@
             margin: 0 0 8px 0;
         }
         
-        /* استفاده از گرادیانت برای خط زیر عناوین */
         h3 {
             padding-bottom: 6px;
             margin-bottom: 15px;
@@ -107,7 +104,6 @@
              border-image: linear-gradient(to right, #8A2387, #E94057) 1;
         }
 
-
         .main-header .name {
             font-size: 24pt;
             font-weight: bold;
@@ -118,7 +114,7 @@
         .main-header .title {
             font-size: 13pt;
             font-weight: normal;
-            color: #00c6ff; /* رنگ آبی روشن برای عنوان */
+            color: #00c6ff;
         }
 
         .contact-info p {
@@ -129,14 +125,9 @@
         ul {
             padding-right: 20px;
             margin: 0;
-            list-style-type: none; /* حذف بولت‌پوینت‌های پیش‌فرض */
+            list-style-type: none;
         }
         
-        ul li {
-            position: relative;
-        }
-        
-        /* ایجاد بولت‌پوینت‌های سفارشی */
         ul li::before {
             content: '■';
             position: absolute;
@@ -145,7 +136,6 @@
             font-size: 10px;
             top: 6px;
         }
-        
 
         .skills ul, .languages ul, .education ul {
             padding-right: 0;
@@ -179,7 +169,6 @@
             margin-bottom: 0;
         }
 
-
         .experience h4 {
             font-size: 12pt;
             font-weight: bold;
@@ -198,9 +187,33 @@
             margin-bottom: 4px;
         }
 
+        /* --- ۴. طراحی واکنش‌گرا (ریسپانسیو) برای موبایل --- */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px; /* فاصله از لبه‌های صفحه موبایل */
+            }
+            .page {
+                flex-direction: column; /* چیدمان عمودی */
+                width: 100%;
+                height: auto; /* ارتفاع خودکار */
+                margin: 0;
+            }
+            .sidebar, .main-content {
+                width: 100%; /* عرض کامل */
+                border-left: none; /* حذف خط جداکننده */
+            }
+            .main-header .name {
+                font-size: 20pt;
+            }
+            .main-header .title {
+                font-size: 12pt;
+            }
+        }
+        
+
         @media print {
             body {
-                background-color: #fff; /* در چاپ، پس‌زمینه سفید باشد */
+                background-color: #fff;
                 color: #000;
             }
             .page {
@@ -209,13 +222,18 @@
                 width: 100%;
                 height: 100%;
                 background-color: #fff;
+                flex-direction: row !important; /* در چاپ، چیدمان دو ستونه بماند */
             }
             .page::before, .page::after {
-                display: none; /* مخفی کردن اشکال رنگی در چاپ */
+                display: none;
             }
             .sidebar {
-                 background-color: #f0f0f0; /* یک پس‌زمینه خیلی روشن برای ستون کناری در چاپ */
+                 background-color: #f0f0f0;
                  border-left: 1px solid #ccc;
+                 width: 35% !important;
+            }
+            .main-content {
+                width: 65% !important;
             }
             h3, h4, .main-header .name, .experience h4 {
                  color: #000 !important;
@@ -342,7 +360,7 @@
                     <h4>کپی‌رایتر (E-commerce)</h4>
                     <h5>به‌روز مارت | مرداد ۱۴۰۱ – آذر ۱۴۰۱</h5>
                     <ul>
-                        <li>نگارش محتوای کامل صفحات محصول و بهینه‌سازی برای موتورهای جستجو</li>
+                        <li>نگارش محتوای کامل صفحات محصول (Product Description) با رویکرد خلاقانه و بهینه‌سازی برای موتورهای جستجو</li>
                     </ul>
                 </article>
                  <article>
