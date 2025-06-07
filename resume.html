@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رزومه امیرحسین آرام‌فر</title>
+    <style>
+        /* --- ۱. وارد کردن فونت و تنظیمات کلی --- */
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #111; /* پس‌زمینه تیره‌تر برای بدنه */
+            color: #EAEAEA;
+            line-height: 1.6;
+            font-size: 10pt;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* --- ۲. ساختار اصلی و پس‌زمینه مدرن --- */
+        .page {
+            display: flex;
+            width: 210mm;
+            height: 297mm;
+            background-color: #1A1A1A; /* پس‌زمینه اصلی رزومه */
+            position: relative; /* برای قرارگیری اشکال رنگی */
+            overflow: hidden; /* پنهان کردن بخش‌های اضافی اشکال */
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* اشکال رنگی در پس‌زمینه */
+        .page::before, .page::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px); /* افکت محو و نرم */
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .page::before {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(90deg, #8A2387, #E94057, #F27121); /* گرادیانت بنفش-نارنجی */
+            top: -150px;
+            right: -150px;
+        }
+
+        .page::after {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff); /* گرادیانت آبی */
+            bottom: -100px;
+            left: -100px;
+        }
+
+
+        .sidebar {
+            width: 35%;
+            padding: 30px;
+            box-sizing: border-box;
+            background-color: rgba(0, 0, 0, 0.1); /* پس‌زمینه نیمه‌شفاف برای ستون */
+            z-index: 2; /* بالاتر از اشکال رنگی */
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .main-content {
+            width: 65%;
+            padding: 30px;
+            box-sizing: border-box;
+            z-index: 2; /* بالاتر از اشکال رنگی */
+        }
+
+        /* --- ۳. استایل‌دهی به بخش‌های مختلف --- */
+        h3, h4, h5 {
+            margin: 0 0 8px 0;
+        }
+        
+        /* استفاده از گرادیانت برای خط زیر عناوین */
+        h3 {
+            padding-bottom: 6px;
+            margin-bottom: 15px;
+            font-size: 14pt;
+            color: #FFFFFF;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(to left, #00c6ff, #0072ff) 1;
+        }
+
+        .sidebar h3 {
+             border-image: linear-gradient(to right, #8A2387, #E94057) 1;
+        }
+
+
+        .main-header .name {
+            font-size: 24pt;
+            font-weight: bold;
+            color: #FFFFFF;
+            margin-bottom: 5px;
+        }
+
+        .main-header .title {
+            font-size: 13pt;
+            font-weight: normal;
+            color: #00c6ff; /* رنگ آبی روشن برای عنوان */
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+            font-size: 10pt;
+        }
+
+        ul {
+            padding-right: 20px;
+            margin: 0;
+            list-style-type: none; /* حذف بولت‌پوینت‌های پیش‌فرض */
+        }
+        
+        ul li {
+            position: relative;
+        }
+        
+        /* ایجاد بولت‌پوینت‌های سفارشی */
+        ul li::before {
+            content: '■';
+            position: absolute;
+            right: -20px;
+            color: #00c6ff;
+            font-size: 10px;
+            top: 6px;
+        }
+        
+
+        .skills ul, .languages ul, .education ul {
+            padding-right: 0;
+        }
+        .skills li, .languages li, .education p {
+            margin-bottom: 6px;
+            font-size: 10pt;
+        }
+        
+        .skills li::before, .languages li::before {
+            color: #8A2387;
+        }
+
+        .skills h4 {
+            margin-top: 15px;
+            color: #cccccc;
+            font-size: 11pt;
+            margin-bottom: 8px;
+        }
+
+        .summary p {
+            font-size: 10pt;
+            text-align: justify;
+        }
+
+        .experience article {
+            margin-bottom: 15px;
+        }
+        
+        .experience article:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .experience h4 {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+
+        .experience h5 {
+            font-size: 9.5pt;
+            font-weight: normal;
+            color: #a0a0a0;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        .experience li {
+            font-size: 10pt;
+            margin-bottom: 4px;
+        }
+
+        @media print {
+            body {
+                background-color: #fff; /* در چاپ، پس‌زمینه سفید باشد */
+                color: #000;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #fff;
+            }
+            .page::before, .page::after {
+                display: none; /* مخفی کردن اشکال رنگی در چاپ */
+            }
+            .sidebar {
+                 background-color: #f0f0f0; /* یک پس‌زمینه خیلی روشن برای ستون کناری در چاپ */
+                 border-left: 1px solid #ccc;
+            }
+            h3, h4, .main-header .name, .experience h4 {
+                 color: #000 !important;
+            }
+            .main-header .title {
+                color: #0072ff !important;
+            }
+            ul li::before {
+                color: #0072ff !important;
+            }
+            .sidebar, .sidebar h3, .sidebar p, .sidebar li, .sidebar h4 {
+                color: #000 !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="page">
+        <aside class="sidebar">
+            <header class="main-header">
+                <h1 class="name">امیرحسین آرام‌فر</h1>
+                <h2 class="title">مدیر محتوا</h2>
+            </header>
+            
+            <section class="contact-info">
+                <h3>اطلاعات تماس</h3>
+                <p>09982506569</p>
+                <p>emiraramfar@gmail.com</p>
+            </section>
+
+            <section class="skills">
+                <h3>مهارت‌ها</h3>
+                <h4>مهارت‌های تخصصی</h4>
+                <ul>
+                    <li>استراتژی بازاریابی محتوایی</li>
+                    <li>کپی‌رایتینگ (وب‌سایت و شبکه‌های اجتماعی)</li>
+                    <li>تولید محتوای متنی</li>
+                    <li>تحقیق کلمات کلیدی و سئوی محتوا (On-Page)</li>
+                    <li>ویراستاری و کنترل کیفی</li>
+                </ul>
+                <h4>ابزارها</h4>
+                <ul>
+                    <li>وردپرس (WordPress)</li>
+                    <li>ابزارهای سئو (مانند Ahrefs, SEMrush)</li>
+                </ul>
+            </section>
+
+            <section class="languages">
+                <h3>زبان‌ها</h3>
+                <ul>
+                    <li>فارسی (زبان مادری)</li>
+                    <li>انگلیسی (بالاتر از متوسط)</li>
+                    <li>عربی (متوسط)</li>
+                    <li>فرانسوی (مقدماتی)</li>
+                </ul>
+            </section>
+
+            <section class="education">
+                <h3>تحصیلات</h3>
+                <p>کاردانی ادبیات انگلیسی</p>
+            </section>
+        </aside>
+
+        <main class="main-content">
+            <section class="summary">
+                <h3>درباره من</h3>
+                <p>
+                    مدیر محتوا با تمرکز ویژه بر هماهنگی تیم و ایجاد ارتباطی شفاف میان ذی‌نفعان پروژه. با بیش از ۳ سال تجربه در اجرای کامل پروژه‌های محتوایی، از ایده‌پردازی اولیه تا انتشار نهایی. توانمند در برنامه‌ریزی و مدیریت تقویم محتوایی، و ایفای نقش به عنوان حلقه وصل میان تیم خلاق و کارفرما برای تضمین کیفیت و پیشبرد روان کارها.
+                </p>
+            </section>
+
+            <section class="experience">
+                <h3>سوابق شغلی</h3>
+                <article>
+                    <h4>مدیر محتوا</h4>
+                    <h5>آژانس دیجیتال مارکتینگ آنیگما | اردیبهشت ۱۴۰۴ – اکنون</h5>
+                    <ul>
+                        <li>تدوین و اجرای استراتژی و تقویم محتوایی برای شبکه‌های اجتماعی و وبلاگ در ۶ پروژه فعال</li>
+                        <li>نظارت و تحلیل مستمر شاخص‌های کلیدی عملکرد (KPIs) محتوا</li>
+                        <li>مدیریت تیم محتوا و ایفای نقش به عنوان حلقه وصل میان تیم و کارفرما</li>
+                    </ul>
+                </article>
+                <article>
+                    <h4>کپی‌رایتر</h4>
+                    <h5>دیجی‌کالا ادرز | خرداد ۱۴۰۲ – آذر ۱۴۰۴</h5>
+                    <ul>
+                        <li>توسعه و نگارش محتواهای آموزشی جامع، راهنماهای کاربری و مقالات وبلاگ</li>
+                        <li>همکاری نزدیک با تیم‌های طراحی و بازاریابی برای تولید محتوای کمپین‌ها</li>
+                    </ul>
+                </article>
+                 <article>
+                    <h4>کپی‌رایتر (B2B)</h4>
+                    <h5>گروه حمل‌ونقل ادمیرال | مهر ۱۴۰۲ – مهر ۱۴۰۳</h5>
+                    <ul>
+                        <li>نگارش و مدیریت محتوای تخصصی شبکه‌های اجتماعی (لینکدین و اینستاگرام) و خبرنامه‌ها</li>
+                        <li>نگارش سناریوهای حرفه‌ای برای ویدئوهای معرفی خدمات و موشن‌گرافیک‌ها</li>
+                    </ul>
+                </article>
+                <article>
+                    <h4>کپی‌رایتر</h4>
+                    <h5>آژانس دیجیتال مارکتینگ آنیگما | بهمن ۱۴۰۱ – اردیبهشت ۱۴۰۴</h5>
+                    <ul>
+                        <li>نگارش محتوا برای شبکه اجتماعی مشتریان</li>
+                        <li>نگارش متن‌های تأثیرگذار برای صفحات فرود (Landing Pages) و مقالات وبلاگ بر اساس اصول سئو</li>
+                    </ul>
+                </article>
+                 <article>
+                    <h4>کارشناس محتوا</h4>
+                    <h5>آژانس نیک مارکتینگ | آبان ۱۴۰۱ – تیر ۱۴۰۲</h5>
+                     <ul>
+                        <li>تحقیق کلمات کلیدی و بهینه‌سازی محتوای وب‌سایت برای موتورهای جستجو</li>
+                        <li>استفاده از ابزارهای تحلیلی برای گزارش‌دهی عملکرد محتوا</li>
+                    </ul>
+                </article>
+                <article>
+                    <h4>کپی‌رایتر (حوزه فین‌تک)</h4>
+                    <h5>صرافی آنلاین توایکس | آبان ۱۴۰۱ – اسفند ۱۴۰۱</h5>
+                    <ul>
+                        <li>تحقیق و نگارش محتوای دقیق و شفاف برای صفحات معرفی رمزارزها</li>
+                    </ul>
+                </article>
+                <article>
+                    <h4>کپی‌رایتر (E-commerce)</h4>
+                    <h5>به‌روز مارت | مرداد ۱۴۰۱ – آذر ۱۴۰۱</h5>
+                    <ul>
+                        <li>نگارش محتوای کامل صفحات محصول و بهینه‌سازی برای موتورهای جستجو</li>
+                    </ul>
+                </article>
+                 <article>
+                    <h4>دستیار سردبیر</h4>
+                    <h5>موتن‌رو | بهمن ۱۴۰۰ – خرداد ۱۴۰۱</h5>
+                    <ul>
+                        <li>ایفای نقش کلیدی در فرآیند برنامه‌ریزی محتوای وبلاگ</li>
+                        <li>آموزش و آنبوردینگ نویسندگان جدید</li>
+                        <li>به‌روزرسانی و بهینه‌سازی محتواهای قدیمی وب‌سایت</li>
+                    </ul>
+                </article>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

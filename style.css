@@ -1,0 +1,132 @@
+/* --- ۱. وارد کردن فونت و تنظیمات کلی --- */
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url('fonts/Vazirmatn-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url('fonts/Vazirmatn-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    font-size: 11pt; /* اندازه فونت پایه برای جا شدن در یک صفحه */
+}
+
+/* --- ۲. ساختار اصلی و چیدمان دو ستونه --- */
+.page {
+    display: flex;
+    max-width: 8.3in; /* عرض یک صفحه A4 */
+    min-height: 11.7in; /* ارتفاع یک صفحه A4 */
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.sidebar {
+    width: 35%;
+    background-color: #2c3e50; /* رنگ سرمه‌ای تیره برای نوار کناری */
+    color: #ecf0f1; /* رنگ متن روشن */
+    padding: 25px;
+}
+
+.main-content {
+    width: 65%;
+    padding: 25px;
+}
+
+/* --- ۳. استایل‌دهی به بخش‌های مختلف --- */
+h1, h2, h3, h4, h5 {
+    margin: 0 0 10px 0;
+}
+
+h3 {
+    border-bottom: 2px solid #3498db; /* خط آبی زیر عنوان بخش‌ها */
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.sidebar h3 {
+    color: #ecf0f1;
+    border-bottom-color: #3498db;
+}
+
+.main-header .name {
+    font-size: 24pt;
+    font-weight: bold;
+    color: #fff;
+}
+
+.main-header .title {
+    font-size: 13pt;
+    font-weight: normal;
+    color: #bdc3c7;
+}
+
+.contact-info p, .education p {
+    margin: 5px 0;
+    font-size: 10pt;
+}
+.contact-info a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    padding-right: 20px;
+    list-style-type: square;
+}
+
+.skills ul, .languages ul {
+    padding-right: 15px;
+    list-style-type: none;
+}
+.skills li, .languages li {
+    margin-bottom: 5px;
+}
+.skills h4 {
+    margin-top: 15px;
+    color: #bdc3c7;
+    font-size: 12pt;
+}
+
+.experience article {
+    margin-bottom: 20px;
+}
+
+.experience h4 {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #34495e;
+}
+
+.experience h5 {
+    font-size: 10pt;
+    font-weight: normal;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+/* برای چاپ، سایه‌ها را حذف می‌کنیم */
+@media print {
+    body {
+        background-color: #fff;
+    }
+    .page {
+        box-shadow: none;
+        margin: 0;
+        max-width: 100%;
+    }
+}
